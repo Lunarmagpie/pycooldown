@@ -1,0 +1,14 @@
+[package]
+# Name of the package. If you already have a package defined in `Cargo.toml`, you can remove
+# this section.
+name = "pycooldown"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "pycooldown"
+path = "pycooldown_rs/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.17.2", features = ["extension-module"] }
