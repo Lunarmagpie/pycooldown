@@ -108,3 +108,6 @@ class SlidingWindow:
 
         self._tokens = self.capacity
         self._last = 0.0
+
+
+from pycooldown._rust_bindings import SlidingWindow

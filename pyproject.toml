@@ -38,6 +38,7 @@ archs = ["auto", "aarch64", "ppc64le", "s390x"]
 requires = [
     "poetry-core>=1.0.0",
     "setuptools",
+    "setuptools-rust",
     "mypy",
 ]
 build-backend = "poetry.core.masonry.api"
