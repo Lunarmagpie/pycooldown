@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import glob
 from typing import Any
 
 from mypyc.build import mypycify  # type: ignore
@@ -15,10 +16,20 @@ mypyc_paths = [
 ]
 
 
+def clean():
+    """Remove any already build .so files"""
+    for file in glob.glob("pycooldown/*.so", recursive=True):
+        print(file)
+        os.remove(file)
+
+
 def build(setup_kwargs: dict[str, Any]) -> None:
     # Don't build wheels in CI.
     if os.environ.get("CI", False):
         return
+
+    clean()
+
     setup_kwargs["ext_modules"] = mypycify(mypyc_paths)
     setup_kwargs["rust_extensions"] = [
         RustExtension(
